@@ -1,0 +1,24 @@
+{
+	"files.eol": "\n",
+	"files.insertFinalNewline": true,
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"prettier.configPath": "",
+	"prettier.disableLanguages": ["javascript", "javascriptreact"],
+	"javascript.format.enable": false,
+	"eslint.nodePath": "",
+	"eslint.options": {
+		"configFile": ""
+	},
+	"eslint.workingDirectories": [
+		{
+			"mode": "auto"
+		}
+	],
+	"[svg]": {
+		"editor.defaultFormatter": "jock.svg"
+	}
+}
