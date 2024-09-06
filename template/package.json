@@ -4,9 +4,10 @@
 	"scripts": {
 		"dev": "cross-env BUILD_ENV=dev webpack server --config ./build/webpack.dev.config.js",
 		"build": "cross-env BUILD_ENV=prod  webpack --config ./build/webpack.build.config.js",
-		"c": "cz"
+		"c": "cz",
+		"analyze": "npm run build -- --analyze"
 	},
-	"license": "ISC",
+	"license": "MIT",
 	"husky": {
 		"hooks": {
 			"pre-commit": "lint-staged",
@@ -70,6 +71,7 @@
 		"svg-inline-loader": "^0.8.2",
 		"tailwindcss": "^3.4.3",
 		"webpack": "^5.91.0",
+		"webpack-bundle-analyzer": "^4.10.2",
 		"webpack-cli": "^5.1.4",
 		"webpack-dev-server": "^5.0.4",
 		"webpack-merge": "^5.10.0"

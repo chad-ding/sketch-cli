@@ -1,9 +1,19 @@
 const { merge } = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const baseConfig = require('./webpack.base.config')
 const { PUBLIC_PATH } = require('./config')
+
+const plugins = [
+	new MiniCssExtractPlugin({
+		filename: 'asset/css/[contenthash].css'
+	})
+]
+if (process.argv.slice(2).includes('--analyze')) {
+	plugins.push(new BundleAnalyzerPlugin())
+}
 
 module.exports = merge(
 	{
@@ -30,11 +40,7 @@ module.exports = merge(
 				}
 			]
 		},
-		plugins: [
-			new MiniCssExtractPlugin({
-				filename: 'asset/css/[contenthash].css'
-			})
-		]
+		plugins
 	},
 	baseConfig
 )
