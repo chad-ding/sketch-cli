@@ -4,7 +4,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const baseConfig = require('./webpack.base.config')
-const { PUBLIC_PATH } = require('./config')
+const { publicPath } = require('./config')
 
 const plugins = [
 	new MiniCssExtractPlugin({
@@ -19,7 +19,7 @@ module.exports = merge(
 	{
 		mode: 'production',
 		output: {
-			publicPath: PUBLIC_PATH
+			publicPath
 		},
 		optimization: {
 			minimizer: [new CssMinimizerPlugin(), '...'],

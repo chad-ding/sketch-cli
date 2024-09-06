@@ -2,7 +2,7 @@ const { merge } = require('webpack-merge')
 const baseConfig = require('./webpack.base.config')
 
 const util = require('./util')
-const { API_HOST } = require('./config')
+const { proxyTable } = require('./config')
 
 module.exports = merge(
 	{
@@ -27,20 +27,6 @@ module.exports = merge(
 					publicPath: '/'
 				}
 			],
-			proxy: [
-				{
-					context: ['/api'],
-					target: API_HOST.MAIN,
-					secure: true,
-					changeOrigin: true
-				},
-				{
-					context: ['/mock'],
-					target: 'http://localhost',
-					secure: true,
-					changeOrigin: true
-				}
-			],
 			open: ['/'],
 			allowedHosts: ['localhost'],
 			hot: true,
@@ -49,7 +35,8 @@ module.exports = merge(
 			port: 8080,
 			client: {
 				overlay: false
-			}
+			},
+			proxy: proxyTable
 		}
 	},
 	baseConfig

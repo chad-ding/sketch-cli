@@ -7,17 +7,17 @@ const postHtml = require('posthtml')
 const postHtmlInlineSvg = require('posthtml-inline-svg')
 
 const util = require('./util')
-const { API_HOST, PUBLIC_PATH } = require('./config')
+const { apiHost, publicPath } = require('./config')
 
 const entry = util.getEntries()
 const HtmlPliginList = Object.keys(entry).map(key => {
-	const fileName = key === 'index' ? 'index.html' : key + '/index.html'
+	const filename = key === 'index' ? 'index.html' : key + '/index.html'
 
 	return new HtmlWebpackPlugin({
-		filename: fileName,
+		filename,
+		publicPath,
 		templateContent: util.getTemplate(key),
 		inject: true,
-		publicPath: PUBLIC_PATH,
 		minify: {
 			removeComments: true,
 			collapseWhitespace: true
@@ -113,10 +113,8 @@ module.exports = {
 		}),
 		new webpack.DefinePlugin({
 			'process.env': {
-				API_HOST: {
-					MAIN: JSON.stringify(API_HOST.MAIN)
-				},
-				BUILD_ENV: `"${buildEnv}"`
+				apiHost,
+				buildEnv: `"${buildEnv}"`
 			}
 		}),
 		new CleanWebpackPlugin(),
