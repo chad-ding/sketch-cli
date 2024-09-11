@@ -135,7 +135,7 @@ export default class VNode extends Event {
 	}
 
 	show() {
-		this.$ele.style.display = undefined
+		this.$ele.style.display = ''
 	}
 
 	hide() {
